@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>เกมทายคำ</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+    }
+</style>
+</head>
+<body>
+<h1>เกมทายคำ</h1>
+<p>ทายคำ: <span id="word"></span></p>
+<input type="text" id="guessInput">
+<button onclick="checkGuess()">ทาย</button>
+<p id="message"></p>
+
+<script>
+    // คำที่ใช้ในเกม
+    const words = ["แมว", "หมา", "นก", "ช้าง", "ลิง", "กระต่าย", "งู", "เสือ", "สิงโต"];
+
+    // เลือกคำสุ่ม
+    let randomIndex = Math.floor(Math.random() * words.length);
+    let chosenWord = words[randomIndex];
+
+    // แสดงคำที่ต้องทาย
+    let displayWord = "";
+    for (let i = 0; i < chosenWord.length; i++) {
+        displayWord += "_ ";
+    }
+    document.getElementById("word").textContent = displayWord;
+
+    // ฟังก์ชันที่ใช้ตรวจสอบคำที่ผู้เล่นทาย
+    function checkGuess() {
+        let guess = document.getElementById("guessInput").value.toLowerCase();
+        if (guess === chosenWord) {
+            document.getElementById("message").textContent = "ยินดีด้วย! คุณทายถูกต้อง";
+        } else {
+            document.getElementById("message").textContent = "เสียใจด้วย! คำที่ทายไม่ถูกต้อง";
+        }
+    }
+</script>
+</body>
+</html>
